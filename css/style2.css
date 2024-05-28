@@ -1,0 +1,22 @@
+.social-links {
+    text-align: center;
+}
+
+.social-links i {
+    font-size: 2rem;
+    color: whitesmoke;
+    transition: color 0.3s ease-in-out;
+    margin: 0 10px;
+}
+
+.social-links .bi-facebook:hover {
+    color: #3b5998;
+}
+
+.social-links .bi-twitter:hover {
+    color: #1da1f2;
+}
+
+.social-links .bi-instagram:hover {
+    color: #e1306c;
+}

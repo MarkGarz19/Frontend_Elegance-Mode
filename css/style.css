@@ -1,0 +1,31 @@
+.footer-container {
+    position: relative;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    top: 0;
+}
+
+
+
+.navbar {
+    background-color: wheat;
+    color: #000000;
+}
+
+.logo {
+    display: inline-block;
+    animation: slide-in 2.0s ease-in-out forwards;
+}
+
+@keyframes slide-in {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
