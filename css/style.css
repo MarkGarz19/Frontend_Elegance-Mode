@@ -17,6 +17,16 @@
     animation: slide-in 2.0s ease-in-out forwards;
 }
 
+.container2 {
+    width: 80%;
+    margin: auto;
+    padding: 1rem;
+    border: 1px solid;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    row-gap: 1rem;
+}
+
 @keyframes slide-in {
     from {
         transform: translateX(-100%);

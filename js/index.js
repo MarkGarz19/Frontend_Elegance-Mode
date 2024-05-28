@@ -13,6 +13,16 @@ const Cardnew = ({ title, image, description, price }) => {
         `
 }
 
+const getAll = async () => {
+    try {
+        const response = await fetch('http://localhost:3007/api/productos')
+        if (response.status !== 200) throw new Error ('error en la peticion')
+        const data = await response.json()
+        renderCards(data)
+    } catch (error) {
+        console.log(error)
+    }
+}
 const renderCards = (array) => {
     contproductos.innerHTML = ''
     array.map(item => {
@@ -20,7 +30,4 @@ const renderCards = (array) => {
     })
 }
 
-fetch('http://localhost:3007/api/productos')
-    .then(res => res.json())
-    .then((data) => console.log(data))
-    .catch(err => console.log(err))
+getAll()
