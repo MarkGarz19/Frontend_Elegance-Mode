@@ -1,3 +1,16 @@
+:host {
+    display: block;
+    grid-area: footer;
+}
+
+.footer-container {
+    position: relative;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    top: 0;
+}
+
 .social-links {
     text-align: center;
 }
