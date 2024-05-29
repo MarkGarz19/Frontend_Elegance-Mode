@@ -1,0 +1,30 @@
+:host {
+    display: block;
+    grid-area: header;
+    width: auto;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar {
+    background-color: gainsboro;
+    color: #000000;
+}
+
+.logo {
+    display: inline-block;
+    animation: slide-in 2.0s ease-in-out forwards;
+}
+
+@keyframes slide-in {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}

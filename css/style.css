@@ -1,40 +1,88 @@
-:host {
-    display: block;
-    grid-area: header;
-    width: auto;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
-.navbar {
-    background-color: gainsboro;
-    color: #000000;
+body {
+    background-color: #161815;
+    font-size: 1.2em;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-.logo {
-    display: inline-block;
-    animation: slide-in 2.0s ease-in-out forwards;
-}
-
-.container2 {
-    width: 80%;
+.container {
+    width: 75%;
     margin: auto;
     padding: 1rem;
-    border: 1px solid;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    row-gap: 1rem;
 }
 
-@keyframes slide-in {
-    from {
-        transform: translateX(-100%);
-        opacity: 0;
+.section-padding {
+    padding: 70px 0;
+
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.btn {
+    padding: 0.8rem;
+    font-size: 1rem;
+    border-radius: 25px;
+}
+
+.carousel-item {
+    height: 80vh;
+    min-height: 300px;
+    margin-top: 15px;
+}
+
+.carousel-responsive .carousel-item img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+
+.carousel-caption {
+    bottom: 220px;
+    z-index: 2;
+}
+
+.carousel-caption h5 {
+    font-size: 35px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 25px;
+}
+
+.carousel-caption p {
+    width: 65%;
+    margin: auto;
+    font-size: 18px;
+    line-height: 1.9;
+}
+
+@media (min-width:250px) and (max-width: 768px) {
+    #carouselE {
+        height: auto;
+        width: auto;
     }
 
-    to {
-        transform: translateX(0);
-        opacity: 1;
+    #carouselE img {
+        height: 70vh;
+        width: auto;
+    }
+
+    #carouselE .carousel-caption h5 {
+        font-size: 14px;
+    }
+
+    #carouselE .carousel-caption p {
+        font-size: 12px;
     }
 }
