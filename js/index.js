@@ -2,12 +2,12 @@ const contproductos = document.querySelector('#contproductos')
 
 const Cardnew = ({ id, title, image, description, price }) => {
     return `
-    <div class="card" id=${id}>
-    <h3 class="card-title">${title}</h3>
+    <div class="card" >
+    <h3 class="card-title" id=${id}>${title}</h3>
     <img class="card-img" src=${image} alt="">
     <p class="card-desc">${description}</p>
     <strong class="card-price">$ ${price}</strong>
-    <button class="btn btn-primary">Agregar al Carrito</button>
+    <button class="btn btn-primary btn-add" data-product='product-${id}'>Agregar al Carrito</button>
     </div>
         `
 }
@@ -35,16 +35,49 @@ const detallesCard = (id) => {
 
 
 const addClickDetalles = () => {
-    const caard = document.querySelectorAll('.card')
+    const caard = document.querySelectorAll('.card-title')
     console.log(caard)
-    caard.forEach((card) => card.addEventListener('click', (event) => {
-        const productID = card.getAttribute('id')
+    caard.forEach((title) => title.addEventListener('click', (event) => {
+        const productID = title.getAttribute('id')
         detallesCard(productID)
     }))
 }
 
+const EventButtonCarrito = () => {
+    const btns = document.querySelectorAll('.btn-add')
+    for (const btn of btns) {
+        btn.addEventListener('click', (event) => {
+            addtocart(event)
+        })
+    }
+}
+
+/* const addtocart = (e) => {
+    let idproducto = e.target.attributes['data-product'].value
+    idproducto.slice(8)
+    fetch(`http://localhost:3007/api/productos/${idproducto}`)
+        .then(res => res.json())
+        .then(json => carrito.push(json))
+        .then(() => localStorage.setItem('carrito', JSON.stringify(carrito)))
+} */
+
+const addtocart = (e) => {
+    let idproducto = e.target.attributes['data-product'].value
+    idproducto.slice(8)
+    fetch(`http://localhost:3007/api/productos/${idproducto}`)
+        .then(res => res.json())
+        .then(json => {
+            let carrito = JSON.parse(localStorage.getItem('carrito'))
+            carrito.push(json)
+            localStorage.setItem('carrito', JSON.stringify(carrito))
+        })
+        .catch(err => console.log(err))
+}
+
+
 document.addEventListener('DOMContentLoaded', async () => {
     await getAll()
     addClickDetalles()
+    EventButtonCarrito()
 })
 
