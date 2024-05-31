@@ -52,14 +52,6 @@ const EventButtonCarrito = () => {
     }
 }
 
-/* const addtocart = (e) => {
-    let idproducto = e.target.attributes['data-product'].value
-    idproducto.slice(8)
-    fetch(`http://localhost:3007/api/productos/${idproducto}`)
-        .then(res => res.json())
-        .then(json => carrito.push(json))
-        .then(() => localStorage.setItem('carrito', JSON.stringify(carrito)))
-} */
 
 const addtocart = (e) => {
     let idproducto = e.target.attributes['data-product'].value
