@@ -1,15 +1,14 @@
-const $ = document;
-const contproductos = $.querySelector('#contproductos')
+const contproductos = document.querySelector('#contproductos')
 
-const Cardnew = ({ title, image, description, price }) => {
+const Cardnew = ({ id, title, image, description, price }) => {
     return `
-    <div class="card">
+    <div class="card" id=${id}>
     <h3 class="card-title">${title}</h3>
     <img class="card-img" src=${image} alt="">
     <p class="card-desc">${description}</p>
     <strong class="card-price">$ ${price}</strong>
     <button class="btn btn-primary">Agregar al Carrito</button>
-  </div>
+    </div>
         `
 }
 
@@ -30,4 +29,22 @@ const renderCards = (array) => {
     })
 }
 
-getAll()
+const detallesCard = (id) => {
+    window.location = `./detalles.html?idproducto=${id}`
+}
+
+
+const addClickDetalles = () => {
+    const caard = document.querySelectorAll('.card')
+    console.log(caard)
+    caard.forEach((card) => card.addEventListener('click', (event) => {
+        const productID = card.getAttribute('id')
+        detallesCard(productID)
+    }))
+}
+
+document.addEventListener('DOMContentLoaded', async () => {
+    await getAll()
+    addClickDetalles()
+})
+
