@@ -21,6 +21,7 @@ document.getElementById('loginForm').addEventListener('submit', async function (
             throw new Error(result.message || 'Error en la solicitud de inicio de sesión');
         }
 
+        localStorage.setItem('isLoggedIn', true);
         alert('Inicio de sesión exitoso');
         window.location.href = 'index.html';
     } catch (error) {

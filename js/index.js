@@ -67,6 +67,7 @@ const addtocart = (e) => {
 }
 
 
+
 document.addEventListener('DOMContentLoaded', async () => {
     await getAll()
     addClickDetalles()
