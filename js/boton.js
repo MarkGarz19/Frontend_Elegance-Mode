@@ -5,10 +5,12 @@ document.addEventListener('DOMContentLoaded', function () {
         // Si el usuario ha iniciado sesión, mostrar el botón de "Cerrar Sesión"
         document.getElementById('loginLink').style.display = 'none';
         document.getElementById('logoutButton').style.display = 'inline-block';
+        document.getElementById('carrito').style.display = 'inline-block';
     } else {
         // Si el usuario no ha iniciado sesión, mostrar el botón de "Iniciar Sesión"
         document.getElementById('loginLink').style.display = 'inline-block';
         document.getElementById('logoutButton').style.display = 'none';
+        document.getElementById('carrito').style.display = 'none';
     }
 });
 
