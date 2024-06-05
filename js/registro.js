@@ -20,6 +20,8 @@ document.getElementById('registerForm').addEventListener('submit', async functio
 
         if (data.error) {
             alert(data.message);
+        } else if (data.message == "El usuario ya existe") {
+            alert("El usuario ya esta registrado. Por favor intentelo de otra manera.");
         } else {
             alert('Usuario registrado exitosamente');
             window.location.href = '../src/login.html';
