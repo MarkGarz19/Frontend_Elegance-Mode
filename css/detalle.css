@@ -1,0 +1,40 @@
+#contdetalles {
+    display: flex;
+    border: 1px ;
+    width: 80%;
+    height: 80vh;
+    margin: auto;
+    padding: 1rem;
+}
+
+#contdetalles>div {
+    border: 1px;
+    width: 50%;
+    padding: 1rem;
+}
+
+
+.ContImagen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.ContImagen img {
+    width: 200px;
+}
+
+.ContDetalles {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.ContDetalles button{
+    width: 60%;
+    margin: 0 auto;
+    padding: 0.6rem;
+    border-radius: 7px;
+}

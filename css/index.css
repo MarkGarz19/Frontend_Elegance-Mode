@@ -67,22 +67,67 @@ body {
     line-height: 1.9;
 }
 
-@media (min-width:250px) and (max-width: 768px) {
+@media (min-width:700px) and (max-width: 977px) {
     #carouselE {
         height: auto;
         width: auto;
     }
 
     #carouselE img {
-        height: 70vh;
+        height: 90vh;
         width: auto;
     }
 
     #carouselE .carousel-caption h5 {
         font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-top: 25px;
     }
 
     #carouselE .carousel-caption p {
         font-size: 12px;
+    }
+}
+
+@media (min-width:200px) and (max-width: 699px) {
+    .card-body {
+        height: 30%;
+        width: auto;
+
+    }
+
+    .carousel-item {
+        height: 50vh;
+        min-height: 500px;
+        margin-top: 20px;
+    }
+
+    .section-padding {
+        padding-top: 10px;
+    }
+
+    #carouselE {
+        height: 100%;
+        width: auto;
+    }
+
+    #carouselE img {
+        height: 100%;
+        width: auto;
+    }
+
+    #carouselE .carousel-caption h5 {
+        font-size: 15px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-top: 5px;
+    }
+
+    #carouselE .carousel-caption p {
+        width: 25%;
+        margin: auto;
+        font-size: 10px;
+        line-height: 1;
     }
 }
