@@ -9,14 +9,22 @@ document.getElementById('contactForm').addEventListener('submit', async function
     };
 
     try {
-        // Enviara el formulario a la base de datos local
-        const response = await fetch('http://localhost:3007/api/productos/mensajes', {
+        // Enviara el formulario de la pagina desplegada a la base de datos
+        const response = await fetch('https://backend-elegance-mode.onrender.com/api/productos/mensajes', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(formData)
         });
+        // Enviara el formulario a la base de datos local
+        /*         const response = await fetch('http://localhost:3007/api/productos/mensajes', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                }); */
 
         // Enviara el formulario a la api de formspree para que le envie el email predeterminado
         const formspreeResponse = await fetch('https://formspree.io/f/xzbnnpzk', {
