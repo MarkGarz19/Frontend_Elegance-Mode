@@ -1,1 +1,0 @@
-export const backendUrl = "https://backend-elegance-mode.onrender.com"

@@ -1,6 +1,5 @@
-import backendUrl  from '../js/config';
 const contproductos = document.querySelector('#contproductos')
-
+const backendUrl = 'https://backend-elegance-mode.onrender.com/'
 const Cardnew = ({ id, title, image, description, price }) => { // se creara la card de productos para la pagina detalles
     return `
     <div class="card" >
