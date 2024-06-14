@@ -1,4 +1,4 @@
-import { backendUrl } from '../js/config';
+const backendUrl = 'https://api.render.com/deploy/srv-cpm0oiiju9rs73flfefg?key=yS-uETTnGHE';
 const contproductos = document.querySelector('#contproductos')
 
 const Cardnew = ({ id, title, image, description, price }) => { // se creara la card de productos para la pagina detalles

@@ -1,4 +1,5 @@
 const contdetalles = document.querySelector('#contdetalles');
+const backendUrl = 'https://api.render.com/deploy/srv-cpm0oiiju9rs73flfefg?key=yS-uETTnGHE';
 
 const getProducto = async () => {
     const url = new URLSearchParams(window.location.search);
