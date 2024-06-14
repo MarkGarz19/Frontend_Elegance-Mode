@@ -14,7 +14,7 @@ const Cardnew = ({ id, title, image, description, price }) => { // se creara la 
 
 const getAll = async () => { // esta funcion asicronica deberia comunicarse con la base de datos para obtener todos los productos
     try {
-        const response = await fetch('http://localhost:3007/api/productos')
+        const response = await fetch(`${backendUrl}/api/productos`)
         if (response.status !== 200) throw new Error('error en la peticion')
         const data = await response.json()
         renderCards(data)
