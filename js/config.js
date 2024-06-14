@@ -1,1 +1,1 @@
-const backendUrl = 'https://backend-elegance-mode.onrender.com';
+export const backendUrl = 'https://backend-elegance-mode.onrender.com';
