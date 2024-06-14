@@ -1,4 +1,4 @@
-import { backendUrl } from '../js/config';
+import backendUrl  from '../js/config';
 const contproductos = document.querySelector('#contproductos')
 
 const Cardnew = ({ id, title, image, description, price }) => { // se creara la card de productos para la pagina detalles
