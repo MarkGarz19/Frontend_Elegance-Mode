@@ -4,7 +4,7 @@ const getProducto = async () => {
     const url = new URLSearchParams(window.location.search);
     const id = url.get('idproducto');
     try {
-        const response = await fetch(`http://localhost:3007/api/productos/${id}`);
+        const response = await fetch(`${backendUrl}/api/productos/${id}`);
         const products = await response.json();
         if (products) {
             return products;
