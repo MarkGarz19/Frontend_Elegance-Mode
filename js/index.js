@@ -1,4 +1,4 @@
-const backendUrl = 'https://api.render.com/deploy/srv-cpm0oiiju9rs73flfefg?key=yS-uETTnGHE';
+const backendUrl = 'https://backend-elegance-mode.onrender.com';
 const contproductos = document.querySelector('#contproductos')
 
 const Cardnew = ({ id, title, image, description, price }) => { // se creara la card de productos para la pagina detalles
