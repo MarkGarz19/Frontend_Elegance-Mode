@@ -118,10 +118,10 @@ const eliminarProductodelcarrito = (producto_id) => { // esta funcion es para el
 
     producto_id = producto_id.toString(); // se convierte el id a string
 
-    const new_carrito = carrito.filter(item => { // se filtra el carrito
-        const id_item = item.id.toString();
-        return id_item !== producto_id;
-    })
+    const nuevo_carrito = carrito.filter(item => {
+        item.id.toString() !== producto_id;
+    })// se filtra el carrito
+    localStorage.setItem('carrito', JSON.stringify(nuevo_carrito)); // Se actualiza el nuevo carrito
     mostrarCarrito(new_carrito);// se mostrara el nuevo carrito
 };
 
