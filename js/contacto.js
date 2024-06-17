@@ -12,6 +12,7 @@ document.getElementById('contactForm').addEventListener('submit', async function
         // Enviara el formulario de la pagina desplegada a la base de datos
         const response = await fetch('https://backend-elegance-mode.onrender.com/api/productos/mensajes', { // esta peticion es para registrar el formulario contacto en la base de datos a traves del render
             method: 'POST',
+            mode: 'cors',
             headers: {
                 'Content-Type': 'application/json'
             },

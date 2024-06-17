@@ -9,6 +9,7 @@ document.getElementById('login_Form').addEventListener('submit', async function 
     try {
         const response = await fetch('https://backend-elegance-mode.onrender.com/api/productos/login', { // esta peticion es para iniciar sesion en la base de datos a traves del render
             method: 'POST',
+            mode: 'cors',
             headers: {
                 'Content-Type': 'application/json'
             },
