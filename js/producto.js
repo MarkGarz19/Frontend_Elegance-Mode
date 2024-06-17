@@ -5,7 +5,7 @@ const getProducto = async () => { // esta funcion asicronica deberia comunicarse
     const url = new URLSearchParams(window.location.search);
     const id = url.get('idproducto'); // obtenemos el id de la url del producto
     try {
-        const response = await fetch(`https://backend-elegance-mode.onrender.com/api/productos/${id}`, { mode: 'no-cors' }); // esta peticion es para obtener un solo producto
+        const response = await fetch(`https://backend-elegance-mode.onrender.com/api/productos/${id}`); // esta peticion es para obtener un solo producto
         const products = await response.json(); // se obtiene el producto y se convierte en un objeto JSON
         if (products) {
             return products; // devolvemos el producto
