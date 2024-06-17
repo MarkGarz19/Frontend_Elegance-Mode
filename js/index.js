@@ -122,7 +122,7 @@ const eliminarProductodelcarrito = (producto_id) => { // esta funcion es para el
         item.id.toString() !== producto_id;
     })// se filtra el carrito
     localStorage.setItem('carrito', JSON.stringify(nuevo_carrito)); // Se actualiza el nuevo carrito
-    mostrarCarrito(new_carrito);// se mostrara el nuevo carrito
+    mostrarCarrito(nuevo_carrito);// se mostrara el nuevo carrito
 };
 
 
