@@ -115,18 +115,10 @@ const mostrarCarrito = () => { // esta funcion es para mostrar el carrito en la 
 
 const eliminarProductodelcarrito = (producto_id) => { // esta funcion es para eliminar el producto del carrito a traves de la id
     let carrito = JSON.parse(localStorage.getItem('carrito')); // recuperara el producto del carrito en el local storage para eliminarlo
-
-    producto_id = producto_id.toString(); // se convierte el id a string
-    const nuevo_carrito = carrito.filter(item => {
-        item.id.toString() === producto_id
-    })
-    if(nuevo_carrito !== -1){
-        carrito.splice(nuevo_carrito,1)
-        localStorage.setItem('carrito', JSON.stringify(nuevo_carrito));
-        mostrarCarrito(carrito);
-    }else{
-        console.log('Error al eliminar el producto del carrito');
-    }
+    producto_id = parseInt(producto_id);
+    carrito = carrito.filter(item => item.id !== producto_id);
+    localStorage.setItem('carrito', JSON.stringify(carrito));
+    mostrarCarrito(carrito);
 };
 
 
