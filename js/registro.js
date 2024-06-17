@@ -10,7 +10,6 @@ document.getElementById('Form_register').addEventListener('submit', async functi
     try {
         const response = await fetch('https://backend-elegance-mode.onrender.com/api/productos/register', { // esta peticion es para registrar el usuario en la base de datos a traves del render
             method: 'POST',
-            mode: 'cors', // para solucionar el problema de cors
             headers: {
                 'Content-Type': 'application/json'
             },

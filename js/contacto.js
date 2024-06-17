@@ -12,7 +12,6 @@ document.getElementById('contactForm').addEventListener('submit', async function
         // Enviara el formulario de la pagina desplegada a la base de datos
         const response = await fetch('https://backend-elegance-mode.onrender.com/api/productos/mensajes', { // esta peticion es para registrar el formulario contacto en la base de datos a traves del render
             method: 'POST',
-            mode: 'cors', // para solucionar el problema de cors
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -30,7 +29,6 @@ document.getElementById('contactForm').addEventListener('submit', async function
         // Enviara el formulario a la api de formspree para que le envie el email predeterminado
         const formspreeResponse = await fetch('https://formspree.io/f/xzbnnpzk', { // esta peticion es para enviar al correo electronico predeterminado de formspree a traves del render
             method: 'POST',
-            mode: 'cors', // para solucionar el problema de cors
             headers: {
                 'Content-Type': 'application/json'
             },

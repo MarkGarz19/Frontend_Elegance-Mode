@@ -7,14 +7,12 @@ document.getElementById('Form_login').addEventListener('submit', async function 
     };
     // CODIGO PARA EJECUTAR LA PAGINA DESPLEGADA
     try {
-        const response = await fetch('https://backend-elegance-mode.onrender.com/api/productos/login', { // esta peticion es para iniciar sesion en la base de datos a traves del render
+        const response = await fetch('https://backend-elegance-mode.onrender.com/api/productos/login', {
             method: 'POST',
-            mode: 'cors', // para solucionar el problema de cors
             headers: {
                 'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(formData)
-        });
+            }
+        }); // esta peticion es para iniciar sesion en la base de datos a traves del render
 
         const result = await response.json();
 
