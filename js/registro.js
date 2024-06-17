@@ -1,4 +1,4 @@
-document.getElementById('registerForm').addEventListener('submit', async function (event) {
+document.getElementById('Form_register').addEventListener('submit', async function (event) {
     event.preventDefault();
     const formData = { // estos son los datos que seran enviados a la base de datos
         nombre: document.getElementById('nombre').value,
@@ -10,6 +10,7 @@ document.getElementById('registerForm').addEventListener('submit', async functio
     try {
         const response = await fetch('https://backend-elegance-mode.onrender.com/api/productos/register', { // esta peticion es para registrar el usuario en la base de datos a traves del render
             method: 'POST',
+            mode: 'cors', // para solucionar el problema de cors
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -20,8 +21,8 @@ document.getElementById('registerForm').addEventListener('submit', async functio
 
         if (data.error) {
             alert(data.message);
-        } else if (data.message == "El usuario ya existe") { // esta condicion es para saber si el usuario ya existe, entonces dara un alerta
-            alert("El usuario ya esta registrado. Por favor intentelo de otra manera.");
+        } else if (data.message == "El usuario ya registrado") { // esta condicion es para saber si el usuario ya existe, entonces dara un alerta
+            alert("Este usuario ya esta registrado. Por favor intentelo pon otro usuario.");
         } else { // en caso contrario registrar el usuario, dara un alerta y luego redirigira a la pagina de login
             alert('Usuario registrado exitosamente');
             window.location.href = '../src/login.html';
@@ -44,8 +45,8 @@ document.getElementById('registerForm').addEventListener('submit', async functio
    
            if (data.error) {
                alert(data.message);
-           } else if (data.message == "El usuario ya existe") {
-               alert("El usuario ya esta registrado. Por favor intentelo de otra manera.");
+           } else if (data.message == "El usuario ya registrado") {
+                alert("Este usuario ya esta registrado. Por favor intentelo pon otro usuario.");
            } else {
                alert('Usuario registrado exitosamente');
                window.location.href = '../src/login.html';

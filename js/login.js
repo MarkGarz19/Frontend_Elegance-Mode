@@ -1,4 +1,4 @@
-document.getElementById('loginForm').addEventListener('submit', async function (event) { // esta funcion asicronica deberia comunicarse con la base de datos para iniciar sesion
+document.getElementById('Form_login').addEventListener('submit', async function (event) { // esta funcion asicronica deberia comunicarse con la base de datos para iniciar sesion
     event.preventDefault();
 
     const formData = { // estos son los datos que seran enviados a la base de datos del formulario
@@ -9,6 +9,7 @@ document.getElementById('loginForm').addEventListener('submit', async function (
     try {
         const response = await fetch('https://backend-elegance-mode.onrender.com/api/productos/login', { // esta peticion es para iniciar sesion en la base de datos a traves del render
             method: 'POST',
+            mode: 'cors', // para solucionar el problema de cors
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -21,7 +22,7 @@ document.getElementById('loginForm').addEventListener('submit', async function (
             throw new Error(result.message || 'Error en la solicitud de inicio de sesión');
         }
         // en caso contrario iniciar sesion, dara un alerta y luego redirigira a la pagina principal
-        localStorage.setItem('isLoggedIn', true);
+        localStorage.setItem('logueado', true);
         alert('Inicio de sesión exitoso');
         window.location.href = 'index.html';
     } catch (error) { // si hay un error en la hora de iniciar sesion daria un alerta
@@ -45,7 +46,7 @@ document.getElementById('loginForm').addEventListener('submit', async function (
               throw new Error(result.message || 'Error en la solicitud de inicio de sesión');
           }
   
-          localStorage.setItem('isLoggedIn', true);
+          localStorage.setItem('logueado', true);
           alert('Inicio de sesión exitoso');
           window.location.href = 'index.html';
       } catch (error) {

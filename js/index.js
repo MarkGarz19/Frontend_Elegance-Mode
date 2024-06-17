@@ -16,7 +16,7 @@ const getAll = async () => { // esta funcion asicronica deberia comunicarse con 
     try {
         const response = await fetch(`https://backend-elegance-mode.onrender.com/api/productos`, {
             method: 'GET',
-            mode: 'cors',
+            mode: 'cors', // para solucionar el problema de cors
             headers: {
                 'Content-Type': 'application/json'
             }
@@ -60,7 +60,13 @@ const EventoBotonCarrito = () => { //esta funcion es para los botones
 
 const agregarcarrito = (e) => { // esta funcion es para agregar los productos al carrito
     const idproducto = e.target.getAttribute('data-product'); // se obtiene el id del producto a traves del data-product
-    fetch(`https://backend-elegance-mode.onrender.com/api/productos/carrito/${idproducto}`) // esta peticion es para agregar el producto al carrito a la base de datos a traves del render
+    fetch(`https://backend-elegance-mode.onrender.com/api/productos/carrito/${idproducto}`,{
+        method: 'GET',
+        mode: 'cors', // para solucionar el problema de cors
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }) // esta peticion es para agregar el producto al carrito a la base de datos a traves del render
         .then(res => res.json())
         .then(json => {
             let carrito = JSON.parse(localStorage.getItem('carrito')) || []; // se guardara el carrito en el local storage o se inicializa vacio
@@ -149,6 +155,7 @@ const EventComprar = () => { // esta funcion es para el evento de comprar
 
             const response = await fetch('https://backend-elegance-mode.onrender.com/api/productos/compra', { // esta peticion es para registrar la compra en la base de datos a traves del render
                 method: 'POST',
+                mode: 'cors', // para solucionar el problema de cors
                 headers: {
                     'Content-Type': 'application/json'
                 },
