@@ -20,7 +20,7 @@ document.getElementById('register_Form').addEventListener('submit', async functi
 
         if (data.error) {
             alert(data.message);
-        } else if (data.message == "El usuario ya existe") { // esta condicion es para saber si el usuario ya existe, entonces dara un alerta
+        } else if (data.message == "El usuario ya registrado") { // esta condicion es para saber si el usuario ya registrado, entonces dara un alerta
             alert("El usuario ya esta registrado. Por favor intentelo de otra manera.");
         } else { // en caso contrario registrar el usuario, dara un alerta y luego redirigira a la pagina de login
             alert('Usuario registrado exitosamente');
