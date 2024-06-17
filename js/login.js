@@ -1,13 +1,13 @@
-document.getElementById('loginForm').addEventListener('submit', async function (event) {
+document.getElementById('loginForm').addEventListener('submit', async function (event) { // esta funcion asicronica deberia comunicarse con la base de datos para iniciar sesion
     event.preventDefault();
 
-    const formData = {
+    const formData = { // estos son los datos que seran enviados a la base de datos del formulario
         email: document.getElementById('email').value,
         password: document.getElementById('password').value,
     };
     // CODIGO PARA EJECUTAR LA PAGINA DESPLEGADA
     try {
-        const response = await fetch('https://backend-elegance-mode.onrender.com/api/productos/login', {
+        const response = await fetch('https://backend-elegance-mode.onrender.com/api/productos/login', { // esta peticion es para iniciar sesion en la base de datos a traves del render
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -17,14 +17,14 @@ document.getElementById('loginForm').addEventListener('submit', async function (
 
         const result = await response.json();
 
-        if (!response.ok) {
+        if (!response.ok) { // si peticion para iniciar sesion no es exitosa dara un error
             throw new Error(result.message || 'Error en la solicitud de inicio de sesión');
         }
-
+        // en caso contrario iniciar sesion, dara un alerta y luego redirigira a la pagina principal
         localStorage.setItem('isLoggedIn', true);
         alert('Inicio de sesión exitoso');
         window.location.href = 'index.html';
-    } catch (error) {
+    } catch (error) { // si hay un error en la hora de iniciar sesion daria un alerta
         console.error('Error al iniciar sesión:', error);
         alert('Usuario o contraseña incorrectos. Por favor, inténtalo de nuevo.');
     }
