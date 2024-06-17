@@ -33,22 +33,16 @@ const renderProduct = (products) => { //se crea una card para el producto que se
     `;
 
     // Agregamos el boton de agregar al carrito al event listener
-    const add_Button = document.querySelector('.btn-add');
-    add_Button.addEventListener('click', agregarcarrito);
+    const addButton = document.querySelector('.btn-add');
+    addButton.addEventListener('click', agregarcarrito);
 };
 
 const agregarcarrito = (e) => { // esta funcion asicronica deberia comunicarse con la base de datos local del navegador para agregar el producto al carrito
     const idproducto = e.target.getAttribute('data-product');
-    fetch(`https://backend-elegance-mode.onrender.com/api/productos/carrito/${idproducto}`, {
-        method: 'GET',
-        mode: 'cors', // para solucionar el problema de cors
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    })
+    fetch(`https://backend-elegance-mode.onrender.com/api/productos/carrito/${idproducto}`)
         .then(res => res.json())
         .then(json => {
-            let carrito = JSON.parse(localStorage.getItem('carrito')) || []; // recuperara el producto del carrito en el local storage
+            let carrito = JSON.parse(localStorage.getItem('carrito')) || []; // se obtiene el carrito del localStorage o se inicializa vacio
             const producto_icono = carrito.findIndex(product => product.id === json.id); // se busca el producto en el carrito a taves de su id
 
             if (producto_icono !== -1) { // si el producto existe en el carrito se aumenta la cantidad
@@ -145,8 +139,8 @@ const renderProduct = (products) => {
     `;
 
     // Agregamos el boton de agregar al carrito al event listener
-    const add_Button = document.querySelector('.btn-add');
-    add_Button.addEventListener('click', agregarcarrito);
+    const addButton = document.querySelector('.btn-add');
+    addButton.addEventListener('click', agregarcarrito);
 };
 
 const agregarcarrito = (e) => {
@@ -175,10 +169,9 @@ const agregarcarrito = (e) => {
         .catch(err => console.error('Error:', err));
 };
 
-}; */
 
 
-// Se inicializa el producto y carga el producto al carrito
+/ Se inicializa el producto y carga el producto al carrito*/
 document.addEventListener('DOMContentLoaded', async () => {
     const product = await getProducto();
     renderProduct(product);
