@@ -22,7 +22,7 @@ document.getElementById('login_Form').addEventListener('submit', async function 
             throw new Error(result.message || 'Error en la solicitud de inicio de sesión');
         }
         // en caso contrario iniciar sesion, dara un alerta y luego redirigira a la pagina principal
-        localStorage.setItem('logueado', true);
+        localStorage.setItem('logueado', email.value); // se almacena el email del usuario en el local storage, cuando se inicie sesion
         alert('Inicio de sesión exitoso');
         window.location.href = 'index.html';
     } catch (error) { // si hay un error en la hora de iniciar sesion daria un alerta
