@@ -32,26 +32,26 @@ document.getElementById('register_Form').addEventListener('submit', async functi
     }
 
     // CODIGO PARA EJECUTAR LA PAGINA EN LA BASE DE DATOS LOCAL
-    /*    try {
-           const response = await fetch('http://localhost:3007/api/productos/register', {
-               method: 'POST',
-               headers: {
-                   'Content-Type': 'application/json'
-               },
-               body: JSON.stringify(formData)
-           });
-   
-           const data = await response.json();
-   
-           if (data.error) {
-               alert(data.message);
-           } else if (data.message == "El usuario ya existe") {
-               alert("El usuario ya esta registrado. Por favor intentelo de otra manera.");
-           } else {
-               alert('Usuario registrado exitosamente');
-               window.location.href = '../src/login.html';
-           }
-       } catch (error) {
-           console.log('Error al registrar usuario:', error);
-       } */
+    /*     try {
+            const response = await fetch('http://localhost:3007/api/productos/register', { // esta peticion es para registrar el usuario en la base de datos local
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            });
+    
+            const data = await response.json();
+    
+            if (data.error) {
+                alert(data.message);
+            } else if (data.message == "El usuario ya registrado") {
+                alert("El usuario ya esta registrado. Por favor intentelo de otra manera.");
+            } else {
+                alert('Usuario registrado exitosamente');
+                window.location.href = '../src/login.html';
+            }
+        } catch (error) {
+            console.log('Error al registrar usuario:', error);
+        } */
 });

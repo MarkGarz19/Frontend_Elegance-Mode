@@ -172,7 +172,7 @@ const EventComprar = () => { // esta funcion es para el evento de comprar
 
 /* const getAll = async () => { // esta funcion asicronica deberia comunicarse con la base de datos para obtener todos los productos
     try {
-        const response = await fetch(`http://localhost:3007/api/productos`)
+        const response = await fetch(`http://localhost:3007/api/productos`) // esta peticion es para obtener todos los productos de la base de datos local
         if (response.status !== 200) throw new Error('error en la peticion')
         const data = await response.json()
         renderCards(data)
@@ -180,30 +180,29 @@ const EventComprar = () => { // esta funcion es para el evento de comprar
         console.log(error)
     }
 }
-const renderCards = (array) => {
-    contproductos.innerHTML = ''
+const renderCards = (array) => { // esta funcion renderizara la card a traves de un array
+    contproductos.innerHTML = '' // esto es para limpiar la pagina
     array.map(item => {
         contproductos.innerHTML += Cardnew(item)
     })
 }
 
 const detallesCard = (id) => { // esta funcion se declarara 
-    window.location = `./detalles.html?idproducto=${id}`
+    window.location = `./detalles.html?idproducto=${id}` // este es el link para el detalle del producto que se redireccione a traves de la id
 }
 
 
-const addClickDetalles = () => {
-    const caard = document.querySelectorAll('.card-title')
-    console.log(caard)
-    caard.forEach((title) => title.addEventListener('click', (event) => {
+const addClickDetalles = () => { // esta funcion es para ver los detalles de los productos
+    const caard = document.querySelectorAll('.card-title') // esta variable es para ver los detalles de los productos a traves del titulo si se da click
+    caard.forEach((title) => title.addEventListener('click', (event) => { // este evento es para ver los detalles de los productos
         const productID = title.getAttribute('id')
         detallesCard(productID)
     }))
 }
 
-const EventoBotonCarrito = () => {
-    const btns = document.querySelectorAll('.btn-add')
-    for (const btn of btns) {
+const EventoBotonCarrito = () => { //esta funcion es para los botones
+    const btns = document.querySelectorAll('.btn-add') // esta variable es para agregar los productos al carrito a traves del boton
+    for (const btn of btns) { // a traves del for se recorren todos los botones para agregar el producto al carrito
         btn.addEventListener('click', (event) => {
             agregarcarrito(event)
         })
@@ -211,38 +210,38 @@ const EventoBotonCarrito = () => {
 }
 
 
-const agregarcarrito = (e) => {
-    const idproducto = e.target.getAttribute('data-product');
-    fetch(`http://localhost:3007/api/productos/carrito/${idproducto}`)
+const agregarcarrito = (e) => { // esta funcion es para agregar los productos al carrito
+    const idproducto = e.target.getAttribute('data-product'); // se obtiene el id del producto a traves del data-product
+    fetch(`http://localhost:3007/api/productos/carrito/${idproducto}`) // esta peticion es para agregar el producto al carrito a la base de datos local
         .then(res => res.json())
         .then(json => {
-            let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+            let carrito = JSON.parse(localStorage.getItem('carrito')) || []; // se guardara el carrito en el local storage o se inicializa vacio
 
-            const newProduct = {
+            const newProduct = { // se crea un nuevo objeto con los datos del producto para agregarlo al carrito
                 id: json.id,
                 title: json.title,
                 image: json.image,
                 price: json.price,
                 quantity: 1
             };
-            carrito.push(newProduct);
-            localStorage.setItem('carrito', JSON.stringify(carrito));
+            carrito.push(newProduct); // se agrega el nuevo producto al carrito
+            localStorage.setItem('carrito', JSON.stringify(carrito)); // se almacena el carro del carrito en el local storage
             mostrarCarrito();
         })
         .catch(err => console.error('Error:', err));
 };
 
-const mostrarCarrito = () => {
-    let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-    const carritoContainer = document.querySelector('#carrito-items');
-    const carritoTotal = document.querySelector('#carrito-total');
+const mostrarCarrito = () => { // esta funcion es para mostrar el carrito en la pagina carrito
+    let carrito = JSON.parse(localStorage.getItem('carrito')) || []; // recuperara el carro del carrito en el local storage
+    const carritoContainer = document.querySelector('#carrito-items'); // se obtiene el contenedor del carrito
+    const carritoTotal = document.querySelector('#carrito-total'); // se obtiene el total del carrito
 
-    carritoContainer.innerHTML = '';
-    let total = 0;
-    if (carrito && carrito.length > 0) {
+    carritoContainer.innerHTML = ''; // esto es para limpiar la pagina
+    let total = 0; // definimos un total para el carrito que sera 0
+    if (carrito && carrito.length > 0) { // si el carrito no es vacio
         carrito.forEach(item => {
-            const itemDiv = document.createElement('div');
-            itemDiv.classList.add('card');
+            const itemDiv = document.createElement('div'); // se creara el item del carrito en un div
+            itemDiv.classList.add('card'); // se agregar una card al div
             itemDiv.innerHTML = `
                 <div class="card-body">
                 <h3 class="card-title">${item.title}</h3>
@@ -250,15 +249,15 @@ const mostrarCarrito = () => {
                 <strong class="card-price">$ ${item.price}</strong>
                 <button class="btn btn-remove btn-danger" data-id="${item.id}">Eliminar</button>
                 </div>
-            `;
-            carritoContainer.appendChild(itemDiv);
-            total += item.price * item.quantity;
+            `;// se creara la card que se mostrara en ese div
+            carritoContainer.appendChild(itemDiv); // se insertara el div en el contenedor del carrito
+            total += item.price * item.quantity; // se actualiza el total del carrito
         });
 
-        const btneliminar = document.querySelectorAll('.btn-remove');
-        btneliminar.forEach(button => {
-            button.addEventListener('click', () => {
-                const producto_id = button.getAttribute('data-id');
+        const btneliminar = document.querySelectorAll('.btn-remove'); // se obtienen todos los botones de eliminar del carrito
+        btneliminar.forEach(button => { // recorre todos los botones de eliminar del carrito
+            button.addEventListener('click', () => { // este evento es para eliminar el producto del carrito
+                const producto_id = button.getAttribute('data-id'); // se obtiene el id del producto a traves del data-id
                 eliminarProductodelcarrito(producto_id);
             });
         });
@@ -272,43 +271,34 @@ const mostrarCarrito = () => {
 
 
 
-const eliminarProductodelcarrito = (producto_id) => {
-    let delete_carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-
-    producto_id = producto_id.toString();
-
-    delete_carrito = carrito.filter(item => {
-        const item_id = item.id.toString();
-        if (item_id !== producto_id) {
-            return true;
-        } else {
-            return false;
-        }
-    });
-    localStorage.setItem('carrito', JSON.stringify(delete_carrito));
-    mostrarCarrito();
+const eliminarProductodelcarrito = (producto_id) => { // esta funcion es para eliminar el producto del carrito a traves de la id
+    let carrito = JSON.parse(localStorage.getItem('carrito')); // recuperara el producto del carrito en el local storage para eliminarlo
+    producto_id = parseInt(producto_id);
+    carrito = carrito.filter(item => item.id !== producto_id);
+    localStorage.setItem('carrito', JSON.stringify(carrito));
+    mostrarCarrito(carrito);
 };
 
 
-const EventComprar = () => {
-    const btnComprar = document.querySelector('.btn-comprar');
-    const metodoDePagoSelect = document.querySelector('#metodo-pago');
-    const btnCancelar = document.querySelector('.btn-cancelar');
+const EventComprar = () => { // esta funcion es para el evento de comprar
+    const btnComprar = document.querySelector('.btn-comprar'); // se obtiene el botón de comprar
+    const metodoDePagoSelect = document.querySelector('#metodo-pago'); // se obtiene el metodo de pago
+    const btnCancelar = document.querySelector('.btn-cancelar'); // se obtiene el botón de cancelar
 
     btnComprar.addEventListener('click', async () => {
         // si se da click en el botón de comprar, se hace la petición a la API de Paypal para realizar la compra
         const metodoDePago = metodoDePagoSelect.value;
         try {
-            let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-            let total = carrito.reduce((sum, item) => sum + item.price * item.quantity, 0);
+            let carrito = JSON.parse(localStorage.getItem('carrito')) || []; // recuperara el carro del carrito en el local storage
+            let total = carrito.reduce((sum, item) => sum + item.price * item.quantity, 0); // se calcula el total del carrito
 
-            const compraData = {
+            const compraData = { // se crea el objeto de la compra para enviar a la base de datos
                 items: carrito,
                 total: total,
                 metodoDePago: metodoDePago
             };
 
-            const response = await fetch('http://localhost:3007/api/productos/compra', {
+            const response = await fetch('http://localhost:3007/api/productos/compra', { // esta peticion es para registrar la compra en la base de datos local
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -333,8 +323,8 @@ const EventComprar = () => {
         localStorage.removeItem('carrito');
         window.location.href = '../src/index.html';
     });
-}; */
-
+};
+ */
 
 
 

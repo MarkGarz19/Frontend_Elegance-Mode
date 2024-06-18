@@ -66,15 +66,15 @@ const agregarcarrito = (e) => { // esta funcion asicronica deberia comunicarse c
 
 // CODIGO PARA EJECUTAR EN LA BASE DE DATOS LOCAL
 /* const EventoComprar = () => {
-    const btnComprar = document.querySelector('.btn-comprar');
-    const metodoDePagoSelect = document.querySelector('#metodo-pago');
-    const btnCancelar = document.querySelector('.btn-cancelar');
+    const btnComprar = document.querySelector('.btn-comprar'); // se obtiene el botón de comprar
+    const metodoDePagoSelect = document.querySelector('#metodo-pago'); // se obtiene el metodo de pago
+    const btnCancelar = document.querySelector('.btn-cancelar'); // se obtiene el botón de cancelar
 
     btnComprar.addEventListener('click', async () => {
         // si se da click en el botón de comprar, se hace la petición a la API de Paypal para realizar la compra
         const metodoDePago = metodoDePagoSelect.value;
         try {
-            let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+            let carrito = JSON.parse(localStorage.getItem('carrito')) || []; // se obtiene el carrito del localStorage o se inicializa vacio
             let total = carrito.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
             const compraData = {
@@ -83,7 +83,7 @@ const agregarcarrito = (e) => { // esta funcion asicronica deberia comunicarse c
                 metodoDePago: metodoDePago
             };
 
-            const response = await fetch('http://localhost:3007/api/productos/compra', {
+            const response = await fetch('http://localhost:3007/api/productos/compra', { // esta peticion es para realizar la compra en la base de datos local
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -102,16 +102,16 @@ const agregarcarrito = (e) => { // esta funcion asicronica deberia comunicarse c
 
     btnCancelar.addEventListener('click', () => {
         alert('Se ha cancelado la compra');
-        window.location.href = 'http://localhost:3007/frontend/index.html';
+        window.location.href = 'http://localhost:3007/frontend/index.html'; // se redirige a la pagina inicial si se da click en cancelar
     });
 };
 
 
-const getProducto = async () => {
+const getProducto = async () => { // esta funcion asicronica deberia comunicarse con la base de datos para obtener todos los productos
     const url = new URLSearchParams(window.location.search);
-    const id = url.get('idproducto');
+    const id = url.get('idproducto'); // obtenemos el id de la url del proyecto
     try {
-        const response = await fetch(`https://localhost:3007/api/productos/${id}`);
+        const response = await fetch(`https://localhost:3007/api/productos/${id}`); // esta peticion es para obtener un solo proyecto
         const products = await response.json();
         if (products) {
             return products;
@@ -121,8 +121,8 @@ const getProducto = async () => {
     }
 };
 
-const renderProduct = (products) => {
-    const { title, image, description, price, category, id } = products;
+const renderProduct = (products) => { //se crea una card para el proyecto que se mostrara en la pagina detalle
+    const { title, image, description, price, category, id } = products; // se extraen las propiedades del objeto JSON
     contdetalles.innerHTML = `
         <div class="ContImagen">
             <div> 
@@ -145,7 +145,7 @@ const renderProduct = (products) => {
 
 const agregarcarrito = (e) => {
     const idproducto = e.target.getAttribute('data-product');
-    fetch(`http://localhost:3007/api/productos/carrito/${idproducto}`)
+    fetch(`http://localhost:3007/api/productos/carrito/${idproducto}`) // esta peticion es para agregar el producto al carrito a la base de datos local
         .then(res => res.json())
         .then(json => {
             let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
@@ -167,7 +167,7 @@ const agregarcarrito = (e) => {
             mostrarCarrito();
         })
         .catch(err => console.error('Error:', err));
-};
+}; */
 
 
 

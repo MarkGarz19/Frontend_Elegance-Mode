@@ -19,7 +19,7 @@ document.getElementById('contactForm').addEventListener('submit', async function
             body: JSON.stringify(formData)
         });
         // Enviara el formulario a la base de datos local
-        /*         const response = await fetch('http://localhost:3007/api/productos/mensajes', {
+        /*         const response = await fetch('http://localhost:3007/api/productos/mensajes', { // esta peticion es para registrar el formulario contacto en la base de datos local
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
