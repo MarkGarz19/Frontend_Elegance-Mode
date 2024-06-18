@@ -167,11 +167,11 @@ const agregarcarrito = (e) => {
             mostrarCarrito();
         })
         .catch(err => console.error('Error:', err));
-}; */
+};
+ */
 
 
-
-/ Se inicializa el producto y carga el producto al carrito*/
+/ Se inicializa el producto y carga el producto al carrito * /
 document.addEventListener('DOMContentLoaded', async () => {
     const product = await getProducto();
     renderProduct(product);

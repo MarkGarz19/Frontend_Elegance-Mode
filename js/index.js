@@ -138,6 +138,7 @@ const EventComprar = () => { // esta funcion es para el evento de comprar
                 items: carrito,
                 total: total,
                 metodoDePago: metodoDePago,
+                usuario: localStorage.getItem('logueado') // se obtiene el usuario logueado y se agrega al objeto de la compra
             };
 
             const response = await fetch('https://backend-elegance-mode.onrender.com/api/productos/compra', { // esta peticion es para registrar la compra en la base de datos a traves del render
@@ -295,7 +296,8 @@ const EventComprar = () => { // esta funcion es para el evento de comprar
             const compraData = { // se crea el objeto de la compra para enviar a la base de datos
                 items: carrito,
                 total: total,
-                metodoDePago: metodoDePago
+                metodoDePago: metodoDePago,
+                usuario: localStorage.getItem('logueado') // se obtiene el usuario logueado y se agrega al objeto de la compra
             };
 
             const response = await fetch('http://localhost:3007/api/productos/compra', { // esta peticion es para registrar la compra en la base de datos local
