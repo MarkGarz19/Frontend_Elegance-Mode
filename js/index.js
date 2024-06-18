@@ -14,7 +14,14 @@ const Cardnew = ({ id, title, image, description, price }) => { // se creara la 
 // CODIGO PARA EJECUTAR LA PAGINA DESPLEGADA
 const getAll = async () => { // esta funcion asicronica deberia comunicarse con la base de datos para obtener todos los productos
     try {
-        const response = await fetch(`https://backend-elegance-mode.onrender.com/api/productos`) // esta peticion es para obtener todos los productos de la base de datos a traves del render
+        const response = await fetch(`https://backend-elegance-mode.onrender.com/api/productos`, {
+            method: 'GET',
+            mode: 'cors',
+            credentials: 'include',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }) // esta peticion es para obtener todos los productos de la base de datos a traves del render
         if (response.status !== 200) throw new Error('error en la peticion') // si la peticion no es exitosa daria un error
         const data = await response.json() // se obtiene el producto y se convierte en un objeto JSON
         renderCards(data) // luego se lo mandara a la funcion para renderizar la card
@@ -54,7 +61,14 @@ const EventoBotonCarrito = () => { //esta funcion es para los botones
 
 const agregarcarrito = (e) => { // esta funcion es para agregar los productos al carrito
     const idproducto = e.target.getAttribute('data-product'); // se obtiene el id del producto a traves del data-product
-    fetch(`https://backend-elegance-mode.onrender.com/api/productos/carrito/${idproducto}`) // esta peticion es para agregar el producto al carrito a la base de datos a traves del render
+    fetch(`https://backend-elegance-mode.onrender.com/api/productos/carrito/${idproducto}`, {
+        method: 'GET',
+        mode: 'cors',
+        credentials: 'include',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }) // esta peticion es para agregar el producto al carrito a la base de datos a traves del render
         .then(res => res.json())
         .then(json => {
             let carrito = JSON.parse(localStorage.getItem('carrito')) || []; // se guardara el carrito en el local storage o se inicializa vacio
@@ -137,11 +151,14 @@ const EventComprar = () => { // esta funcion es para el evento de comprar
             const compraData = { // se crea el objeto de la compra para enviar a la base de datos
                 items: carrito,
                 total: total,
-                metodoDePago: metodoDePago
+                metodoDePago: metodoDePago,
+
             };
 
             const response = await fetch('https://backend-elegance-mode.onrender.com/api/productos/compra', { // esta peticion es para registrar la compra en la base de datos a traves del render
                 method: 'POST',
+                mode: 'cors',
+                credentials: 'include',
                 headers: {
                     'Content-Type': 'application/json'
                 },
